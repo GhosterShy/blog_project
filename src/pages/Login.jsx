@@ -24,6 +24,8 @@ export default function Login() {
       navigate('/profile');
     } else {
       alert('Ошибка входа');
+      const errorData = await res.json();
+      setError(errorData.message || 'Ошибка входа');
     }
   };
 
