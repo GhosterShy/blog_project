@@ -22,10 +22,11 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "concurrently \"node server/server.js\" \"react-scripts start\"",
+    "start": "node server/server.js",
+    "build": "npm run build:client",
+    "build:client": "react-scripts build",
+    "heroku-postbuild": "npm run build:client"
   },
   "eslintConfig": {
     "extends": [

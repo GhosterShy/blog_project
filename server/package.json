@@ -1,0 +1,8 @@
+{
+  "name": "server",
+  "main": "server.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}
