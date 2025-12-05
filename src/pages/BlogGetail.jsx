@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../App.js';
+import { api } from '../api.js';
 
 export default function BlogDetail() {
   const { id } = useParams();
@@ -11,17 +12,17 @@ export default function BlogDetail() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`/api/blogs/${id}`)
+    api(`/blogs/${id}`)
       .then(res => res.json())
       .then(setBlog);
-    fetch(`/api/blogs/${id}/comments`)
+    api(`/blogs/${id}/comments`)
       .then(res => res.json())
       .then(setComments);
   }, [id]);
 
   const addComment = async (e) => {
     e.preventDefault();
-    const res = await fetch(`api/blogs/${id}/comments`, {
+    const res = await api(`/blogs/${id}/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

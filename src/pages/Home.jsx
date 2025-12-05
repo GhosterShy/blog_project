@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { api } from '../api.js';
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]); // useState
@@ -7,7 +8,7 @@ export default function Home() {
   const search = searchParams.get('search') || '';
 
   useEffect(() => { 
-    fetch(`/api/blogs?search=${search}`)
+    api(`/blogs?search=${search}`)
       .then(res => res.json())
       .then(setBlogs);
   }, [search]);

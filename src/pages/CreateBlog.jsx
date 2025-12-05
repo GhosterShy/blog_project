@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { api } from '../api';
 
 export default function CreateBlog() {
   const [title, setTitle] = useState('');
@@ -8,7 +9,7 @@ export default function CreateBlog() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('/api/blogs', {
+    await api('/api/blogs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

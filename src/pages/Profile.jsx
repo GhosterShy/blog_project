@@ -2,21 +2,21 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../App.js';
+import { api } from '../api.js';
 
 export default function Profile() {
   const { user } = useContext(UserContext);
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch('/api/blogs')
+    api('/blogs')
       .then(res => res.json())
       .then(allBlogs => setBlogs(allBlogs.filter(b => b.author._id === user._id)));
   }, [user]);
 
   const deleteBlog = async (id) => {
-    // Используем window.confrict вместо просто confirm
     if (window.confirm('Удалить?')) {
-      await fetch(`/api/blogs/${id}`, { 
+      await api(`/blogs/${id}`, { 
         method: 'DELETE', 
         credentials: 'include' 
       });

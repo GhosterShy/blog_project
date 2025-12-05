@@ -8,6 +8,7 @@ import Profile from './pages/Profile.jsx';
 import BlogDetail from './pages/BlogGetail.jsx';
 import CreateBlog from './pages/CreateBlog.jsx';
 import EditBlog from './pages/EditBlog.jsx';
+import { api } from './api.js';
 
 export const UserContext = createContext();
 
@@ -16,7 +17,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const location = useLocation(); 
   useEffect(() => {
-    fetch('/api/auth/me', { 
+    api('/auth/me', { 
       credentials: 'include',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`

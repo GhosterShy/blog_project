@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../App.js';
+import { api } from '../api.js';
+
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -12,12 +14,12 @@ export default function Register() {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    // Валидация на клиенте
     if (!username || !email || !password) {
       setError('Все поля обязательны для заполнения');
       setLoading(false);
@@ -34,7 +36,7 @@ export default function Register() {
     console.log('Отправляемые данные:', userData);
 
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await api('/auth/register', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

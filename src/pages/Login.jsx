@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../App.js';
+import { api } from '../api.js';
   
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -10,9 +11,10 @@ export default function Login() {
   const [error, setError] = useState('');
   const { setUser } = useContext(UserContext);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/auth/login', {
+    const res = await api('/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

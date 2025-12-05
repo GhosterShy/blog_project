@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { api } from '../api';
 
 export default function EditBlog() {
   const { id } = useParams();
@@ -8,7 +9,7 @@ export default function EditBlog() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/api/blogs/${id}`)
+    api(`/blogs/${id}`)
       .then(res => res.json())
       .then(blog => {
         setTitle(blog.title);
@@ -18,7 +19,7 @@ export default function EditBlog() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(`/api/blogs/${id}`, {
+    await api(`/blogs/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
