@@ -16,7 +16,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const location = useLocation(); 
   useEffect(() => {
-    fetch('http://localhost:5000/api/auth/me', { 
+    fetch('/api/auth/me', { 
       credentials: 'include',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`

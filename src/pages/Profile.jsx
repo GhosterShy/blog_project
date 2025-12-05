@@ -8,7 +8,7 @@ export default function Profile() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/blogs')
+    fetch('/api/blogs')
       .then(res => res.json())
       .then(allBlogs => setBlogs(allBlogs.filter(b => b.author._id === user._id)));
   }, [user]);
@@ -16,7 +16,7 @@ export default function Profile() {
   const deleteBlog = async (id) => {
     // Используем window.confrict вместо просто confirm
     if (window.confirm('Удалить?')) {
-      await fetch(`http://localhost:5000/api/blogs/${id}`, { 
+      await fetch(`/api/blogs/${id}`, { 
         method: 'DELETE', 
         credentials: 'include' 
       });

@@ -7,7 +7,7 @@ export default function Home() {
   const search = searchParams.get('search') || '';
 
   useEffect(() => { 
-    fetch(`http://localhost:5000/api/blogs?search=${search}`)
+    fetch(`/api/blogs?search=${search}`)
       .then(res => res.json())
       .then(setBlogs);
   }, [search]);

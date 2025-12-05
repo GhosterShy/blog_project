@@ -8,7 +8,7 @@ export default function EditBlog() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/blogs/${id}`)
+    fetch(`/api/blogs/${id}`)
       .then(res => res.json())
       .then(blog => {
         setTitle(blog.title);
@@ -18,7 +18,7 @@ export default function EditBlog() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:5000/api/blogs/${id}`, {
+    await fetch(`/api/blogs/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

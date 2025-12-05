@@ -11,17 +11,17 @@ export default function BlogDetail() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/blogs/${id}`)
+    fetch(`/api/blogs/${id}`)
       .then(res => res.json())
       .then(setBlog);
-    fetch(`http://localhost:5000/api/blogs/${id}/comments`)
+    fetch(`/api/blogs/${id}/comments`)
       .then(res => res.json())
       .then(setComments);
   }, [id]);
 
   const addComment = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:5000/api/blogs/${id}/comments`, {
+    const res = await fetch(`api/blogs/${id}/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
