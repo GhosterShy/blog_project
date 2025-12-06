@@ -14,7 +14,6 @@ export const UserContext = createContext();
 
 function App() {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
   const location = useLocation(); 
   useEffect(() => {
     api('/auth/me', { 
@@ -26,12 +25,10 @@ function App() {
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         setUser(data);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

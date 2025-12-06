@@ -24,6 +24,7 @@
   "scripts": {
     "dev": "concurrently \"node server/server.js\" \"react-scripts start\"",
     "start": "node server/server.js",
+    "start.client": "react-scripts start",
     "build": "npm run build:client",
     "build:client": "react-scripts build",
     "heroku-postbuild": "npm run build:client"
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
+    "concurrently": "^9.2.1",
     "nodemon": "^3.1.11",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17"
