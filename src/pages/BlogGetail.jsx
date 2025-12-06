@@ -46,7 +46,7 @@ export default function BlogDetail() {
       <div className="row justify-content-center">
         <div className="col-lg-9">
 
-          {/* Заголовок и мета */}
+
           <article className="card border-0 shadow-sm mb-5">
             <div className="card-body p-5">
               <h1 className="display-4 fw-bold mb-4">{blog.title}</h1>
