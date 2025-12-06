@@ -21,11 +21,5 @@
       "src": "/(.*)",
       "dest": "/build/index.html"
     }
-  ],
-  "functions": {
-    "server/server.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
+  ]
 }
