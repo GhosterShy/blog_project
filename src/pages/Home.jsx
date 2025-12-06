@@ -6,12 +6,25 @@ export default function Home() {
   const [blogs, setBlogs] = useState([]); // useState
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
+  const [loadining, setLoadining] = useState(true);
 
   useEffect(() => { 
     api(`/blogs?search=${search}`)
       .then(res => res.json())
-      .then(setBlogs);
+      .then(setBlogs)
+      .then(() => setLoadining(false));
   }, [search]);
+
+  if (loadining) {
+    return <div className="container py-5 text-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="visually-hidden">Загрузка...</span>
+      </div>
+    </div>;
+  }
+
+
+
 
   return (
    <div className="container mt-4">
