@@ -80,7 +80,7 @@ export default function BlogDetail() {
               Комментарии ({comments.length})
             </h2>
 
-            {/* Форма добавления комментария */}
+            
             {user ? (
               <div className="card border-0 shadow-sm mb-4">
                 <div className="card-body">
